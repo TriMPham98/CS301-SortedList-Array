@@ -31,7 +31,22 @@ bool SortedList<T>::Contains(T someItem) {
 
 template<class T>
 void SortedList<T>::PutItem(T item) {
+    if (IsFull()) {
+        return;
+    }
 
+    for (int i = 0; i < length; i++) {
+        if (item < info[i]) {
+            for (int j = length - 1;
+                 j >= i; j--) { // Shift over one for every element in the array to make space to put item
+                info[j + 1] = info[j];
+            }
+            info[i] = item;
+            length++;
+            return;
+        }
+    }
+    info[length] = item; // Add to end if item is larger than all values in array
 }
 
 template<class T>
