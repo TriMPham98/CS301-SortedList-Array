@@ -61,17 +61,15 @@ void SortedList<T>::AddItem(T item) {
 
 template<class T>
 void SortedList<T>::DeleteItem(T item) {
-//    for (int i = 0; i < length; i++) {
-//        // found item
-//        if (info[i] == item) {
-//            // Slide
-//            for (int j = i + 1; j < length; j++) {
-//                info[j - 1] = info[j];
-//            }
-//            --length;
-//            return;
-//        }
-//    }
+    for (int i = 0; i < length; i++) {
+        if (info[i] == item) {
+            for (int j = i + 1; j < length; j++) {
+                info[j - 1] = info[j];
+            }
+            --length;
+            return;
+        }
+    }
 }
 
 template<class T>
