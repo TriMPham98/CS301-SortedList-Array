@@ -41,14 +41,12 @@ bool SortedList<T>::Contains(T someItem) {
 
 template<class T>
 void SortedList<T>::AddItem(T item) {
-
     if (IsFull()) {
         return;
     }
 
     for (int i = 0; i < length; i++) {
         if (info[i] > item) {
-            // Slide
             for (int j = length - 1; j >= i; j--) {
                 info[j + 1] = info[j];
             }
@@ -63,17 +61,17 @@ void SortedList<T>::AddItem(T item) {
 
 template<class T>
 void SortedList<T>::DeleteItem(T item) {
-    for (int i = 0; i < length; i++) {
-        // found item
-        if (info[i] == item) {
-            // Slide
-            for (int j = i + 1; j < length; j++) {
-                info[j - 1] = info[j];
-            }
-            --length;
-            return;
-        }
-    }
+//    for (int i = 0; i < length; i++) {
+//        // found item
+//        if (info[i] == item) {
+//            // Slide
+//            for (int j = i + 1; j < length; j++) {
+//                info[j - 1] = info[j];
+//            }
+//            --length;
+//            return;
+//        }
+//    }
 }
 
 template<class T>
@@ -83,9 +81,7 @@ void SortedList<T>::ResetIterator() {
 
 template<class T>
 T SortedList<T>::GetNextItem() {
-    if (currentPos >= length) {
-        throw "Out of bounds";
-    }
+
     currentPos++;
     return info[currentPos];
 }
