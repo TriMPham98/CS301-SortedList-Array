@@ -5,7 +5,7 @@
 template<class T>
 SortedList<T>::SortedList() {
     length = 0;
-    currentPos = -1;  // 0
+    currentPos = 0;  // 0
 }
 
 template<class T>
@@ -30,15 +30,16 @@ bool SortedList<T>::Contains(T someItem) {
 }
 
 template<class T>
-void SortedList<T>::PutItem(T item) {
+void SortedList<T>::AddItem(T item) {
+
     if (IsFull()) {
         return;
     }
 
     for (int i = 0; i < length; i++) {
-        if (item < info[i]) {
-            for (int j = length - 1;
-                 j >= i; j--) { // Shift over one for every element in the array to make space to put item
+        if (info[i] > item) {
+            // Slide
+            for (int j = length - 1; j >= i; j--) {
                 info[j + 1] = info[j];
             }
             info[i] = item;
@@ -46,11 +47,25 @@ void SortedList<T>::PutItem(T item) {
             return;
         }
     }
-    info[length] = item; // Add to end if item is larger than all values in array
+
+    info[length] = item;
+    length++;
 }
 
 template<class T>
 void SortedList<T>::DeleteItem(T item) {
+
+    for (int i = 0; i < length; i++) {
+        // found item
+        if (info[i] == item) {
+            // Slide
+            for (int j = i + 1; j < length; j++) {
+                info[j - 1] = info[j];
+            }
+            --length;
+            return;
+        }
+    }
 
 }
 
@@ -67,4 +82,3 @@ int SortedList<T>::GetNextItem() {
     currentPos++;
     return info[currentPos];
 }
-
