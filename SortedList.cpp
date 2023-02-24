@@ -81,7 +81,9 @@ void SortedList<T>::ResetIterator() {
 
 template<class T>
 T SortedList<T>::GetNextItem() {
-
+    if (currentPos >= length) {
+        throw "Out of bounds";
+    }
     currentPos++;
     return info[currentPos];
 }
