@@ -1,6 +1,4 @@
-
 #include "SortedList.h"
-
 
 template<class T>
 SortedList<T>::SortedList() {
@@ -59,14 +57,12 @@ void SortedList<T>::AddItem(T item) {
             return;
         }
     }
-
     info[length] = item;
     length++;
 }
 
 template<class T>
 void SortedList<T>::DeleteItem(T item) {
-
     for (int i = 0; i < length; i++) {
         // found item
         if (info[i] == item) {
@@ -78,7 +74,6 @@ void SortedList<T>::DeleteItem(T item) {
             return;
         }
     }
-
 }
 
 template<class T>
