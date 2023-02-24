@@ -5,7 +5,7 @@
 template<class T>
 SortedList<T>::SortedList() {
     length = 0;
-    currentPos = 0;  // 0
+    currentPos = 0;
 }
 
 template<class T>
@@ -25,7 +25,11 @@ int SortedList<T>::GetLength() const {
 
 template<class T>
 bool SortedList<T>::Contains(T someItem) {
-
+    for (int i = 0; i < length; i++) {
+        if (info[i] == someItem) {
+            return true;
+        }
+    }
     return false;
 }
 
