@@ -25,9 +25,17 @@ int SortedList<T>::GetLength() const {
 
 template<class T>
 bool SortedList<T>::Contains(T someItem) {
-    for (int i = 0; i < length; i++) {
-        if (info[i] == someItem) {
+    int low = 0;
+    int high = length - 1;
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (info[mid] == someItem) {
             return true;
+        } else if (info[mid] < someItem) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
         }
     }
     return false;
