@@ -54,7 +54,7 @@ int main()
 		{
 			inFile >> item;
 			//cin >> item;
-			list.PutItem(item);
+			list.AddItem(item);
 			outFile << item;
 			outFile << " is in list." << endl;
 		}
